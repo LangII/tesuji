@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Ship.gd" type="Script" id=1]
+[ext_resource path="res://art/tesuji_ship_02.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, -25, 25, 25, 7, 16, -7, 16, -25, 25 )
+
+[node name="Ship" type="KinematicBody2D" index="0"]
+
+position = Vector2( 100, 100 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+ROT_SPEED = 3
+THRUST = 150
+VEL_MAX = 200
+ELASTICITY = 0.25
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="Collision" type="CollisionShape2D" parent="." index="1"]
+
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera" type="Camera2D" parent="." index="2"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="BulletSpawn" type="Position2D" parent="." index="3"]
+
+position = Vector2( 0, -22 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BulletTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="BulletContainer" type="Node" parent="." index="5"]
+
+

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/tesuji_tile_01.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5, 5 )
+
+[node name="Tiles" type="Node2D"]
+
+[node name="tile_01" type="Sprite" parent="." index="0"]
+
+position = Vector2( 10, 10 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="tile_01_static" type="StaticBody2D" parent="tile_01" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+
+[node name="tile_01_col" type="CollisionShape2D" parent="tile_01/tile_01_static" index="0"]
+
+shape = SubResource( 1 )
+
+
